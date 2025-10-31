@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #3b82f6;
+  --color-primary-hover: #1e40af;
+  --color-secondary: #4b5563;
+  --color-bg: #f9fafb;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+  --color-text: #111827;
+}
+
+.dark {
+  --color-primary: #08CB00; 
+  --color-primary-hover: #08CB00; 
+  --color-secondary: #9ca3af; 
+  --color-bg: #111; 
+  --color-surface: #181818;
+  --color-border: #2a2a2a;
+  --color-text: #e5e7eb;
+}
+
+
+
+/* Shimmer Loading Effect */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-border);
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+
+
