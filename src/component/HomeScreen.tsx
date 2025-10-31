@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 import "../App.css";
 
-const HomeScreen: React.FC<{
-  darkMode: boolean;
-  setDarkMode: (val: boolean) => void;
-}> = ({ darkMode, setDarkMode }) => {
+const HomeScreen: React.FC = () => {
   const navigate = useNavigate();
+  const { darkMode, toggleDarkMode } = useTheme();
   const [prompt, setPrompt] = useState("");
 
   const examples = [
@@ -25,15 +24,6 @@ const HomeScreen: React.FC<{
     "Create a listing page showing all job candidates with filters for job title, status, and application date.",
     "Generate a list of shortlisted candidates with quick actions for viewing, editing, or rejecting applications.",
   ];
-
-  // Apply dark class to document root for CSS variable switching
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -113,7 +103,7 @@ const HomeScreen: React.FC<{
         {/* Theme Toggle */}
         <div className="pt-6">
           <button
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={toggleDarkMode}
             className="flex items-center justify-center gap-2 px-3 py-2 w-full rounded-lg transition-colors"
             style={{
               backgroundColor: "var(--color-border)",
@@ -180,7 +170,8 @@ const HomeScreen: React.FC<{
                   color: "var(--color-text)",
                 }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.backgroundColor = "var(--color-primary)")
+                  (e.currentTarget.style.backgroundColor =
+                    "var(--color-primary)")
                 }
                 onMouseLeave={(e) =>
                   (e.currentTarget.style.backgroundColor = "var(--color-border)")
