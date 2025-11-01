@@ -21,6 +21,21 @@
 }
 
 
+.theme-overlay {
+  opacity: 1;
+  animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+
 
 /* Shimmer Loading Effect */
 .shimmer {

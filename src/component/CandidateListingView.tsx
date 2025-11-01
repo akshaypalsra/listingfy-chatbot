@@ -276,7 +276,7 @@ const Sidebar: React.FC<{
     []
   );
   const [input, setInput] = useState("");
-  const { darkMode, toggleDarkMode } = useTheme();
+  const { darkMode, toggleDarkModeAt } = useTheme();
 
   const handleSend = () => {
     if (!input.trim()) return;
@@ -375,7 +375,11 @@ const Sidebar: React.FC<{
         style={{ borderColor: "var(--color-border)" }}
       >
         <button
-          onClick={toggleDarkMode}
+          onClick={(e) => {
+        // get click coordinates relative to viewport
+        const { clientX, clientY } = e;
+        toggleDarkModeAt(clientX, clientY);
+      }}
           className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
           style={{
             backgroundColor: "var(--color-bg)",

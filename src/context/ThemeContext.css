@@ -1,0 +1,17 @@
+/* styles for the circle overlay */
+.theme-circle-overlay {
+  transform: scale(0);
+  opacity: 1;
+}
+
+/* when the overlay has the attribute data-animate we scale to full size */
+.theme-circle-overlay[data-animate="1"] {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* fade-out rule after scale finishes (optional extra polish) */
+.theme-circle-overlay[data-fade="1"] {
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
